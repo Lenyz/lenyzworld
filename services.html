@@ -80,6 +80,52 @@
 
     a:hover {
       text-decoration: underline;
+    }     
+    /* AUDIO SECTION (BOTTOM-LEFT) */
+    .audio-section {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      margin-top: 1rem;
+      justify-content: center;
+    }
+
+    .audio-card {
+      background-color: #fff;
+      border-radius: 22px;
+      padding: 1rem;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+      max-width: 100%;
+      transition: transform 0.2s ease;
+    }
+
+    .audio-card:hover {
+      transform: scale(1.02);
+    }
+
+    .audio-card audio {
+      width: 100%;
+      margin: 0.5rem 0;
+    }
+
+    .buy-link {
+      display: inline-block;
+      margin-top: 0.4rem;
+      font-size: 0.9rem;
+      color: #1e88e5;
+      text-decoration: none;
+    }
+
+    .buy-link:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+      .audio-section {
+        position: static;
+        margin-top: 2rem;
+        align-items: center;
+      }
     }
   </style>
 </head>
@@ -93,11 +139,11 @@
       <h3>We do not provide the pricing on our site due to various reasons. Contact me directly!</h3><br><br>
       <p><strong>Reddit Accounts:</strong></p>
       <ul class="user-list">
-        <li>Reddit: <b><a href="https://www.reddit.com/user/discord-_-" target="_blank">discord-_–</a></b></li>
-        <li>Reddit: <b><a href="https://www.reddit.com/user/interchangeabIe" target="_blank">interchangeabIe</a></b></li>
-        <li>Reddit: <b><a href="https://www.reddit.com/user/unidentifiabIe" target="_blank">unidentifiabIe</a></b></li>
-        <li>Reddit: <b><a href="https://www.reddit.com/user/lntermediate" target="_blank">lntermediate</a></b></li>
-        <li>Reddit: <b><a href="https://www.reddit.com/user/Sluggers-" target="_blank">Sluggers-</a></b></li>
+        <li><b><a href="https://www.reddit.com/user/discord-_-" target="_blank">discord-_–</a></b></li>
+        <li><b><a href="https://www.reddit.com/user/interchangeabIe" target="_blank">interchangeabIe</a></b></li>
+        <li><b><a href="https://www.reddit.com/user/unidentifiabIe" target="_blank">unidentifiabIe</a></b></li>
+        <li><b><a href="https://www.reddit.com/user/lntermediate" target="_blank">lntermediate</a></b></li>
+        <li><b><a href="https://www.reddit.com/user/Sluggers-" target="_blank">Sluggers-</a></b></li>
       </ul>
 
       <p><strong>Roblox Accounts:</strong></p>
@@ -153,7 +199,32 @@
 
       </ul><br><br>
     </div>
+    <div class="service">
+      <h2> Rebassed Audios</h2>  
+      <!-- 🎧 AUDIO CONTROL CENTER -->
+      <div class="audio-section">
+        <div class="audio-card">
+          <p><strong>🔥Quiero Sexo DOBLE TONO</b></strong></p>
+          <audio controls>
+            <source src="/audios/track1.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+          </audio>
+          <a href="https://discord.gg/fUEAx48YkX" class="buy-link">Buy Full Track</a>
+        </div>
 
+        <div class="audio-card">
+          <p><strong>NBA Youngboy - Preach (35-62hz)</strong></p>
+          <audio controls>
+            <source src="/audios/track2.m4a" type="audio/mpeg">
+            Your browser does not support the audio element.
+          </audio>
+          <a href="https://discord.gg/fUEAx48YkX" class="buy-link">Buy Full Track</a>
+        </div>
+        <div class="audio-card">
+          <a href="https://discord.gg/fUEAx48YkX" class="buy-link">Visit the Discord server for more rebassed audios!</a>
+        </div>
+    </div>
+  </div>
     <div class="footer">
       <a href="/index.html">← Back to Home</a>
       <br><br><br>
