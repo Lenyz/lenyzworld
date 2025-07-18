@@ -42,7 +42,6 @@
       padding: 0 0.3rem;
       border-radius: 4px;
       box-shadow: 3px 3px #99999960;
-      color: #2c3e50;
     }
 
     p {
@@ -187,6 +186,50 @@
     .download-button:hover {
       background: #1565c0;
     }
+
+    /* Mobile Konami Buttons */
+    .mobile-arrows {
+      position: fixed;
+      bottom: 1rem;
+      left: 1rem;
+      z-index: 999;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+      transition: transform 0.3s ease;
+    }
+
+    .mobile-arrows.hide {
+      transform: translateY(150%);
+    }
+
+    .mobile-arrows button {
+      width: 44px;
+      height: 44px;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      background: white;
+      border: 1px solid #ccc;
+      cursor: pointer;
+    }
+
+    .horizontal-arrows {
+      display: flex;
+      gap: 0.4rem;
+      justify-content: center;
+    }
+
+    .ab-buttons {
+      display: flex;
+      gap: 0.4rem;
+    }
+
+    @media (max-width: 600px) {
+      .mobile-arrows {
+        display: flex;
+      }
+    }
   </style>
 </head>
 <body>
@@ -218,11 +261,24 @@
   <!-- Dark Mode Toggle -->
   <button class="dark-toggle" id="darkToggle">🌙</button>
 
-  <!-- Konami Code Popup -->
+  <!-- Mobile Konami Buttons -->
+  <div class="mobile-arrows" id="mobileArrows">
+    <button data-key="ArrowUp">↑</button>
+    <div class="horizontal-arrows">
+      <button data-key="ArrowLeft">←</button>
+      <button data-key="ArrowDown">↓</button>
+      <button data-key="ArrowRight">→</button>
+    </div>
+    <div class="ab-buttons">
+      <button data-key="b">B</button>
+      <button data-key="a">A</button>
+    </div>
+  </div>
+
   <div class="konami-popup" id="konamiPopup">
     <div class="squircle">
-      <h2>You Found our Secret</h2>
-      <p>Here's a free audio file, rebassed exclusively by Leny.</p>
+      <h2>You Found the Secret</h2>
+      <p>Free audio for you! Rebassed exclusively by Leny.</p>
       <audio controls>
         <source src="/audios/187552.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
@@ -241,11 +297,14 @@
     let lastScrollTop = 0;
     window.addEventListener('scroll', function () {
       const st = window.pageYOffset || document.documentElement.scrollTop;
+      const arrows = document.getElementById('mobileArrows');
       if (window.innerWidth < 600) {
         if (st > lastScrollTop) {
           toggle.classList.add("hide");
+          arrows.classList.add("hide");
         } else {
           toggle.classList.remove("hide");
+          arrows.classList.remove("hide");
         }
       }
       lastScrollTop = st <= 0 ? 0 : st;
@@ -267,21 +326,43 @@
       'ArrowRight': new Audio('/audios/right.mp3')
     };
 
-    window.addEventListener('keydown', function (e) {
-      if (arrowSounds[e.key]) {
-        arrowSounds[e.key].play().catch(() => {});
+    function handleKonamiInput(key) {
+      if (arrowSounds[key]) {
+        arrowSounds[key].play().catch(() => {});
       }
-      inputSequence.push(e.key);
+
+      inputSequence.push(key);
       inputSequence = inputSequence.slice(-konamiSequence.length);
       if (JSON.stringify(inputSequence).toLowerCase() === JSON.stringify(konamiSequence).toLowerCase()) {
         document.getElementById('konamiPopup').classList.add('active');
       }
+    }
+
+    window.addEventListener('keydown', function (e) {
+      handleKonamiInput(e.key);
     });
+
+    document.querySelectorAll('#mobileArrows button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const key = btn.dataset.key;
+        handleKonamiInput(key);
+      });
+    });
+
 
     document.getElementById('konamiPopup').addEventListener('click', function (e) {
       if (e.target === this) {
         this.classList.remove('active');
       }
+    });
+
+    // Simulate keydown on mobile button clicks
+    const mobileButtons = document.querySelectorAll('#mobileArrows button');
+    mobileButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const key = btn.dataset.key;
+        document.dispatchEvent(new KeyboardEvent('keydown', { key }));
+      });
     });
   </script>
 </body>
