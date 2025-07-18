@@ -21,16 +21,6 @@
       padding: 2rem;
     }
 
-    /* navigation --coming soon!
-    <nav>
-      <ul>
-        <li><a href="/index.html">Home</a></li>
-        <li><a href="/services.html">Services</a></li>
-        <li><a href="/contact.html">Contact</a></li>
-      </ul>
-    </nav>
-    */
-
     .card {
       background: white;
       border-radius: 12px;
@@ -52,6 +42,7 @@
       padding: 0 0.3rem;
       border-radius: 4px;
       box-shadow: 3px 3px #99999960;
+      color: #2c3e50;
     }
 
     p {
@@ -63,6 +54,12 @@
     .highlight {
       color: #39697d;
       font-weight: 600;
+    }
+
+    .dark-mode p,
+    .dark-mode .highlight,
+    .dark-mode h1 {
+      color: #ddd !important;
     }
 
     .social-icons {
@@ -110,10 +107,89 @@
       font-size: 0.9rem;
       color: #aaa;
     }
+
+    .dark-toggle {
+      position: fixed;
+      bottom: 1rem;
+      right: 1rem;
+      z-index: 1000;
+      background: #fff;
+      border: none;
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.6rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      transition: transform 0.2s ease;
+    }
+
+    .dark-toggle.hide {
+      transform: translateY(150%);
+      transition: transform 0.4s ease;
+    }
+
+    .dark-mode {
+      background: #1e1e1e;
+      color: #eee;
+    }
+
+    .card.dark-mode {
+      background: #2c2c2c;
+      color: #eee;
+    }
+
+    .konami-popup {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.75);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+    }
+
+    .konami-popup.active {
+      display: flex;
+    }
+
+    .squircle {
+      background: white;
+      border-radius: 30px;
+      padding: 2rem;
+      width: 90%;
+      max-width: 400px;
+      text-align: center;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .dark-mode .squircle {
+      background: #2c2c2c;
+      color: #eee;
+    }
+
+    .squircle h2 {
+      margin-top: 0;
+      color: inherit;
+    }
+
+    .download-button {
+      margin-top: 1rem;
+      display: inline-block;
+      background: #1e88e5;
+      color: white;
+      padding: 0.7rem 1.2rem;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .download-button:hover {
+      background: #1565c0;
+    }
   </style>
 </head>
 <body>
-
   <div class="card">
     <h1>Hey! I'm <span>Leny</span></h1>
     <p>
@@ -139,5 +215,74 @@
     </div>
   </div>
 
+  <!-- Dark Mode Toggle -->
+  <button class="dark-toggle" id="darkToggle">🌙</button>
+
+  <!-- Konami Code Popup -->
+  <div class="konami-popup" id="konamiPopup">
+    <div class="squircle">
+      <h2>You Found our Secret</h2>
+      <p>Here's a free audio file, re-bassed exclusively by Leny.</p>
+      <audio controls>
+        <source src="/audios/187552.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+      <a href="/audios/187552.mp3" download class="download-button">Download</a>
+    </div>
+  </div>
+
+  <script>
+    const toggle = document.getElementById('darkToggle');
+    toggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      document.querySelector('.card').classList.toggle('dark-mode');
+    });
+
+    let lastScrollTop = 0;
+    window.addEventListener('scroll', function () {
+      const st = window.pageYOffset || document.documentElement.scrollTop;
+      if (window.innerWidth < 600) {
+        if (st > lastScrollTop) {
+          toggle.classList.add("hide");
+        } else {
+          toggle.classList.remove("hide");
+        }
+      }
+      lastScrollTop = st <= 0 ? 0 : st;
+    }, false);
+
+    const konamiSequence = [
+      'ArrowUp', 'ArrowUp',
+      'ArrowDown', 'ArrowDown',
+      'ArrowLeft', 'ArrowRight',
+      'ArrowLeft', 'ArrowRight',
+      'b', 'a'
+    ];
+    let inputSequence = [];
+
+    const arrowSounds = {
+      'ArrowUp': new Audio('/audios/up.mp3'),
+      'ArrowDown': new Audio('/audios/down.mp3'),
+      'ArrowLeft': new Audio('/audios/left.mp3'),
+      'ArrowRight': new Audio('/audios/right.mp3')
+    };
+
+    window.addEventListener('keydown', function (e) {
+      if (arrowSounds[e.key]) {
+        arrowSounds[e.key].play().catch(() => {});
+      }
+      inputSequence.push(e.key);
+      inputSequence = inputSequence.slice(-konamiSequence.length);
+      if (JSON.stringify(inputSequence).toLowerCase() === JSON.stringify(konamiSequence).toLowerCase()) {
+        document.getElementById('konamiPopup').classList.add('active');
+      }
+    });
+
+    document.getElementById('konamiPopup').addEventListener('click', function (e) {
+      if (e.target === this) {
+        this.classList.remove('active');
+      }
+    });
+  </script>
 </body>
 </html>
