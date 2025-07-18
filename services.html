@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LenyzTECH ! Services</title>
   <link rel="icon" href="/images/favicon.png" type="image/x-icon" />
-  <title>Lenyz Services</title>
-  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet" />
   <style>
     body {
       margin: 0;
@@ -13,6 +13,7 @@
       background: linear-gradient(135deg, #e0f7fa, #e3f2fd);
       color: #333;
       padding: 2rem;
+      transition: background 0.3s, color 0.3s;
     }
 
     .container {
@@ -28,7 +29,7 @@
     }
 
     .service {
-      background-color: white;
+      background-color: #fff;
       padding: 2rem;
       border-radius: 12px;
       box-shadow: 0 6px 18px rgba(0, 0, 0, 0.07);
@@ -80,8 +81,9 @@
 
     a:hover {
       text-decoration: underline;
-    }     
-    /* AUDIO SECTION (BOTTOM-LEFT) */
+    }
+
+    /* AUDIO SECTION */
     .audio-section {
       display: flex;
       flex-direction: column;
@@ -113,26 +115,102 @@
       margin-top: 0.4rem;
       font-size: 0.9rem;
       color: #1e88e5;
-      text-decoration: none;
     }
 
     .buy-link:hover {
       text-decoration: underline;
     }
 
-    @media (max-width: 600px) {
-      .audio-section {
-        position: static;
-        margin-top: 2rem;
-        align-items: center;
-      }
+    /* DARK MODE */
+    body.dark-mode {
+      background: #121212;
+      color: #eee;
+    }
+
+    body.dark-mode h1,
+    body.dark-mode h2,
+    body.dark-mode h3,
+    body.dark-mode p,
+    body.dark-mode a {
+      color: #eee;
+    }
+
+    body.dark-mode .service,
+    body.dark-mode .audio-card {
+      background-color: #1f1f1f;
+      box-shadow: 0 0 12px rgba(255, 255, 255, 0.05);
+    }
+
+    /* DARK MODE TOGGLE BUTTON */
+    .dark-toggle {
+      position: fixed;
+      bottom: 1rem;
+      right: 1rem;
+      z-index: 1000;
+      background: white;
+      border: none;
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.6rem;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    /* KONAMI POPUP */
+    .konami-popup {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.75);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+    }
+
+    .konami-popup.active {
+      display: flex;
+    }
+
+    .squircle {
+      background: white;
+      border-radius: 30px;
+      padding: 2rem;
+      width: 90%;
+      max-width: 400px;
+      text-align: center;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .dark-mode .squircle {
+      background: #2c2c2c;
+      color: #eee;
+    }
+
+    .squircle h2 {
+      margin-top: 0;
+      color: inherit;
+    }
+
+    .download-button {
+      margin-top: 1rem;
+      display: inline-block;
+      background: #1e88e5;
+      color: white;
+      padding: 0.7rem 1.2rem;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .download-button:hover {
+      background: #1565c0;
     }
   </style>
 </head>
 <body>
   <div class="container">
     <h1>Lenyz Services</h1>
-
     <div class="service">
       <h2>Account Selling</h2>
       <p>I offer rare/OG usernames and accounts for various platforms available for trade or purchase directly from me. All accounts are reviewed to ensure safety and legitimacy.</p>
@@ -230,11 +308,81 @@
       <p><strong>For those looking to create a site similar to mine, a portfolio with your own thought in mind or just a frontend website for your business, I got you covered.</strong></p>
       <a href="https://discord.gg/fUEAx48YkX" class="buy-link">Join the Discord Server and Message Me Personally.</a>
     </div>
+
     <div class="footer">
       <a href="/index.html">← Back to Home</a>
       <br><br><br>
-      (&copy; 2025 LenyzTECH&TRADE;)
+      (&copy; 2025 LenyzTECH™)
     </div>
   </div>
+
+  <!-- DARK MODE TOGGLE -->
+  <button class="dark-toggle" id="darkToggle">🌙</button>
+
+  <!-- KONAMI POPUP -->
+  <div class="konami-popup" id="konamiPopup">
+    <div class="squircle">
+      <h2>You Found our Secret</h2>
+      <p>Here's a free audio file, re-bassed exclusively by Leny.</p>
+      <audio controls id="secretAudio">
+        <source src="/audios/187552.mp3" type="audio/mpeg" />
+        Your browser does not support the audio element.
+      </audio>
+      <a href="/audios/187552.mp3" download class="download-button">Download</a>
+    </div>
+  </div>
+
+  <!-- JS LOGIC -->
+  <script>
+    // Toggle dark mode
+    const toggle = document.getElementById('darkToggle');
+    toggle.onclick = () => {
+      document.body.classList.toggle('dark-mode');
+      localStorage.setItem("dark", document.body.classList.contains("dark-mode"));
+    };
+
+    // Keep mode on page reload
+    if (localStorage.getItem("dark") === "true") {
+      document.body.classList.add("dark-mode");
+    }
+
+    // Konami code + audio
+    const konamiSequence = [
+      'ArrowUp', 'ArrowUp',
+      'ArrowDown', 'ArrowDown',
+      'ArrowLeft', 'ArrowRight',
+      'ArrowLeft', 'ArrowRight',
+      'b', 'a'
+    ];
+    let inputSequence = [];
+
+    const arrowSounds = {
+      ArrowUp: new Audio('/audios/up.mp3'),
+      ArrowDown: new Audio('/audios/down.mp3'),
+      ArrowLeft: new Audio('/audios/left.mp3'),
+      ArrowRight: new Audio('/audios/right.mp3'),
+    };
+
+    window.addEventListener('keydown', function (e) {
+      if (arrowSounds[e.key]) {
+        arrowSounds[e.key].play().catch(() => {});
+      }
+
+      inputSequence.push(e.key);
+      inputSequence = inputSequence.slice(-konamiSequence.length);
+
+      if (inputSequence.join(',') === konamiSequence.join(',')) {
+        document.getElementById('konamiPopup').classList.add('active');
+        const audio = document.getElementById('secretAudio');
+        if (audio) audio.play().catch(() => {});
+      }
+    });
+
+    document.getElementById('konamiPopup').addEventListener('click', function (e) {
+      if (e.target === this) {
+        this.classList.remove('active');
+      }
+    });
+  </script>
 </body>
 </html>
