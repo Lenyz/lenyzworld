@@ -366,5 +366,92 @@
       });
     });
   </script>
+<!-- What's New Popup -->
+<div id="whatsNewOverlay" class="whats-new-overlay">
+  <div class="whats-new-container">
+    <button class="close-btn" onclick="dismissWhatsNew()">&times;</button>
+    <h3>What's New!</h3>
+    <p>2 new songs in my services!</a></p>
+  </div>
+</div>
+
+<style>
+  .whats-new-overlay {
+    position: fixed;
+    z-index: 9998;
+    bottom: 2rem;
+    left: 2rem;
+    background: transparent;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    pointer-events: none;
+  }
+
+  .whats-new-container {
+    background: white;
+    border-radius: 24px;
+    padding: 1.5rem;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    max-width: 280px;
+    width: 100%;
+    pointer-events: all;
+    position: relative;
+  }
+
+  .whats-new-container h3 {
+    margin-top: 0;
+    font-size: 1.3rem;
+  }
+
+  .whats-new-container p {
+    margin: 0.5rem 0 0;
+  }
+
+  .close-btn {
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: #444;
+  }
+
+  .dark-mode .whats-new-container {
+    background: #2c2c2c;
+    color: #eee;
+  }
+
+  @media (max-width: 600px) {
+    .whats-new-overlay {
+      background: rgba(0, 0, 0, 0.65);
+      inset: 0;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+</style>
+
+<script>
+  function dismissWhatsNew() {
+    document.getElementById('whatsNewOverlay').style.display = 'none';
+    const expiry = new Date();
+    expiry.setDate(expiry.getDate() + 7);
+    localStorage.setItem('whatsNewDismissed', expiry.getTime());
+  }
+
+  function showWhatsNewIfNeeded() {
+    const dismissedUntil = localStorage.getItem('whatsNewDismissed');
+    const now = Date.now();
+    if (!dismissedUntil || now > parseInt(dismissedUntil)) {
+      document.getElementById('whatsNewOverlay').style.display = 'flex';
+    }
+  }
+
+  window.addEventListener('DOMContentLoaded', showWhatsNewIfNeeded);
+</script>
+
 </body>
 </html>
