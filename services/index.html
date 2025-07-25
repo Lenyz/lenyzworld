@@ -290,12 +290,52 @@
       transform: translateY(-8px);
     }
 
+    .service-nav {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin: 1rem 0 2rem;
+      flex-wrap: wrap;
+    }
+
+    .service-nav a {
+      padding: 0.5rem 1rem;
+      background-color: #eee;
+      border-radius: 10px;
+      text-decoration: none;
+      color: #333;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+
+    body.dark-mode .service-nav a {
+      background-color: #444;
+      color: #f0f0f0;
+    }
+
+    .service-nav a:hover {
+      background-color: #ccc;
+    }
+
+    body.dark-mode .service-nav a:hover {
+      background-color: #666;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
   </style>
 </head>
 <body>
   <div class="container">
     <h1>Lenyz Services</h1>
-    <div class="service">
+    <div class="service-nav">
+      <a href="#accounts">Account Selling</a>
+      <a href="#audios">Rebassed Audios</a>
+      <a href="#portfolio">Website Creation</a>
+    </div>
+    <div class="service" id="accounts">
       <h2>Account Selling</h2>
       <p>I offer rare/OG usernames and accounts for various platforms available for trade or purchase directly from me. All accounts are reviewed to ensure safety and legitimacy.</p>
       <h3>We do not provide the pricing on our site due to various reasons. Contact me directly!</h3><br><br>
@@ -401,7 +441,7 @@
 
       </ul><br><br>
     </div>
-    <div class="service">
+    <div class="service" id="audios">
       <h2> Rebassed Audios</h2>  
       <p>Enjoy clips of some songs I've personally rebassed for those with car audio systems or headphones. Tracks are <b>clips</b>, and have a watermark, do not reuse for commercial sale.</p>
       <!-- 🎧 AUDIO CONTROL CENTER -->
@@ -459,7 +499,7 @@
 
       </div>
     </div>
-    <div class="service">
+    <div class="service" id="portfolio">
       <h2>Website Creation</h2>
       <p>For those looking to create a site similar to mine, a portfolio with your own thought in mind or just a frontend website for your business, I got you covered.</p>
       <a href="https://discord.gg/fUEAx48YkX" class="buy-link">Join the Discord Server and Message Me Personally.</a>
