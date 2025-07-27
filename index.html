@@ -18,7 +18,7 @@
       align-items: center;
       min-height: 100vh;
       flex-direction: column;
-      padding: 2rem;
+      padding: 0;
     }
 
     .card {
@@ -266,7 +266,7 @@
       padding: 6px 10px;
       font-size: 0.75rem;
       position: absolute;
-      bottom: 140%; /* Position it above the badge */
+      bottom: 140%;
       left: 50%;
       transform: translateX(-50%);
       white-space: nowrap;
@@ -279,25 +279,66 @@
       visibility: visible;
       opacity: 1;
     }
-
-    /* Optional dark mode support */
+    
     .dark-mode .tooltip-text {
-      background-color: #eee;
+      background-color: #ffffff;
       color: #111;
     }
 
-      .tooltip img {
-        transition: transform 0.2s;
+    .tooltip img {
+      transition: transform 0.2s;
+    }
+
+    .tooltip:hover img {
+      transform: scale(1.1);
+    }
+
+      .announcement-banner {
+        background: linear-gradient(90deg, #ff7f5c, #ff9671);
+        color: white;
+        padding: 1rem 1.5rem;
+        margin: 1rem auto 2rem auto;
+        max-width: 95%;
+        width: 100%;
+        border-radius: 20px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
+        align-items: center;
+        justify-content: center;
+        font-family: 'Rubik', sans-serif;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
       }
 
-      .tooltip:hover img {
-        transform: scale(1.1);
+      .announcement-banner p {
+        margin: 0;
+        font-size: 1.05rem;
+        font-weight: 500;
       }
 
+      .banner-button {
+        background: white;
+        color: #ff5c3c;
+        padding: 0.5rem 1.2rem;
+        font-weight: bold;
+        border-radius: 8px;
+        text-decoration: none;
+        transition: background 0.3s;
+        font-size: 0.95rem;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      }
 
+      .banner-button:hover {
+        background: #f2f2f2;
+      }
   </style>
 </head>
 <body>
+  <div class="announcement-banner">
+    <p>I want your feedback on my website! Suggestions and Bug Reports are appreciated.</p>
+    <a href="/services/index.html" class="banner-button">View</a>
+  </div>
   <div class="card">
     <img src="/images/leny.jpg" alt="Leny" class="profile-pic">
     <div class="badges">
@@ -470,7 +511,7 @@
   <div class="whats-new-container">
     <button class="close-btn" onclick="dismissWhatsNew()">&times;</button>
     <h3>What's New!</h3>
-    <p>Added Badges, 1 new Reddit account and 1 new track on my <a href="/services/index.html">services</a>!</p>
+    <p>Added Badges, 1 new Reddit account and 1 new track on my services!</p>
   <sub>7/27/2025</sub></div>
 </div>
 
