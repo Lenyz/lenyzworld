@@ -235,36 +235,128 @@
     html {
       scroll-behavior: smooth;
     }
+
+    .badges {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin: 0.5rem 0;
+    }
+
+    .badges img {
+      width: 28px;
+      height: 28px;
+    }
+
+    .dark-mode .badges img {
+      filter: brightness(1.2);
+    }
+
+    .tooltip {
+      position: relative;
+      display: inline-block;
+    }
+
+    .tooltip-text {
+      visibility: hidden;
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      border-radius: 6px;
+      padding: 6px 10px;
+      font-size: 0.75rem;
+      position: absolute;
+      bottom: 140%; /* Position it above the badge */
+      left: 50%;
+      transform: translateX(-50%);
+      white-space: nowrap;
+      opacity: 0;
+      transition: opacity 0.2s;
+      z-index: 10;
+    }
+
+    .tooltip:hover .tooltip-text {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    /* Optional dark mode support */
+    .dark-mode .tooltip-text {
+      background-color: #eee;
+      color: #111;
+    }
+
+      .tooltip img {
+        transition: transform 0.2s;
+      }
+
+      .tooltip:hover img {
+        transform: scale(1.1);
+      }
+
+
   </style>
 </head>
 <body>
   <div class="card">
-    <h1>Hey! I'm <span>Leny</span></h1>
-    <p>
-      I'm a 17-year-old upcoming content creator from the DR and now in the USA!<br />
-      Web Developer - <span class="highlight">Python</span>, <span class="highlight">Java</span>, <span class="highlight">HTML</span>, & learning!
-    </p>
-
-    <img src="/images/leny.jpg" alt="Leny Profile" class="profile-pic" />
-
-    <div class="social-icons">
-      <a href="https://discord.gg/wb6a3wvZ" target="_blank"><i class="fab fa-discord"></i></a>
-      <a href="https://instagram.com/lenyzworld" target="_blank"><i class="fab fa-instagram"></i></a>
-      <a href="https://www.tiktok.com/@lenyzworld" target="_blank"><i class="fab fa-tiktok"></i></a>
-      <a href="https://www.youtube.com/@lenyzworld" target="_blank"><i class="fab fa-youtube"></i></a>
+    <img src="/images/leny.jpg" alt="Leny" class="profile-pic">
+    <div class="badges">
+      <div class="tooltip">
+        <img src="/images/sword.png" alt="Moderator">
+        <span class="tooltip-text">Moderator</span>
+      </div>
+      <div class="tooltip">
+        <img src="/images/nitro.png" alt="Discord Nitro">
+        <span class="tooltip-text">Discord Nitro</span>
+      </div>
+      <div class="tooltip">
+        <img src="/images/server-boost.png" alt="Server Booster">
+        <span class="tooltip-text">Server Booster</span>
+      </div>
+      <div class="tooltip">
+        <img src="/images/active-developer.png" alt="Active Developer">
+        <span class="tooltip-text">Active Developer</span>
+      </div>
+      <div class="tooltip">
+        <img src="/images/bravery.png" alt="HypeSquad Bravery">
+        <span class="tooltip-text">HypeSquad Bravery</span>
+      </div>
+      <div class="tooltip">
+        <img src="/images/quest-completion.png" alt="Quest Completionist">
+        <span class="tooltip-text">Quest Completionist</span>
+      </div>
+      <div class="tooltip">
+        <img src="/images/orbs-apprentice.png" alt="Orbs Apprentice">
+        <span class="tooltip-text">Orbs Apprentice</span>
+      </div>
     </div>
+      <h1>Hey! I'm <span>Leny</span></h1>
 
-    <p class="highlight">@4w4u on Discord</p>
+      <p>
+        I'm a 17-year-old upcoming content creator from the DR and now in the USA!<br />
+        Web Developer - <span class="highlight">Python</span>, <span class="highlight">Java</span>, <span class="highlight">HTML</span>, & learning!
+      </p>
 
-    <a class="button-link" href="/services/index.html">Lenyz Services</a>
+      <div class="social-icons">
+        <a href="https://discord.gg/wb6a3wvZ" target="_blank"><i class="fab fa-discord"></i></a>
+        <a href="https://instagram.com/lenyzworld" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.tiktok.com/@lenyzworld" target="_blank"><i class="fab fa-tiktok"></i></a>
+        <a href="https://www.youtube.com/@lenyzworld" target="_blank"><i class="fab fa-youtube"></i></a>
+      </div>
 
-    <div class="footer">
-      ( &copy; 2025 LenyzTECH&TRADE; )<br>
-      <small style="display:block; margin-top: 0.4rem; font-size: 0.75rem; color: #aaa; font-style: italic;">
-        IP addresses are tracked for security and analytics purposes, and are never shared publicly. I reserve the right to block or blacklist any IP without prior notice.
-      </small>
+      <p class="highlight">@4w4u on Discord</p>
+
+      <a class="button-link" href="/services/index.html">Lenyz Services</a>
+
+      <div class="footer">
+        ( &copy; 2025 LenyzTECH&TRADE; )<br>
+        <small style="display:block; margin-top: 0.4rem; font-size: 0.75rem; color: #aaa; font-style: italic;">
+          IP addresses are tracked for security and analytics purposes, and are never shared publicly. I reserve the right to block or blacklist any IP without prior notice.
+        </small>
+      </div>
     </div>
-  </div>
+</div>
+
 
   <!-- Dark Mode Toggle -->
   <button class="dark-toggle" id="darkToggle">🌙</button>
@@ -378,8 +470,8 @@
   <div class="whats-new-container">
     <button class="close-btn" onclick="dismissWhatsNew()">&times;</button>
     <h3>What's New!</h3>
-    <p>8 new Reddit accounts and minor visual enhancements.</a></p>
-  <sub>7/26/2025</sub></div>
+    <p>Added badges to the homepage.</a></p>
+  <sub>7/27/2025</sub></div>
 </div>
 
 <style>
