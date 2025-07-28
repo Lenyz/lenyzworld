@@ -336,6 +336,14 @@
     html {
       scroll-behavior: smooth;
     }
+
+    .audio-new {
+      text-align: right;
+      color: red;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+    }
     
     .track-meta {
       display: flex;
@@ -360,6 +368,19 @@
       font-size: 0.75rem;
     }
 
+    .purchase-button {
+      background: #3b8bd2;
+      color: white;
+      border: none;
+      padding: 0.7rem 1.2rem;
+      border-radius: 12px;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 1001;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      text-align: center;
+    }
+
 
   </style>
 </head>
@@ -370,98 +391,100 @@
       <a href="#accounts">Account Selling</a>
       <a href="#audios">Rebassed Audios</a>
       <a href="#portfolio">Website Creation</a>
+      <a href="/index.html">Return Home</a>
     </div>
     <div class="service" id="accounts">
       <h2>Account Selling</h2>
       <p>I offer rare/OG usernames and accounts for various platforms available for trade or purchase directly from me. All accounts are reviewed to ensure safety and legitimacy.</p>
-      <h3>We do not provide the pricing on our site due to various reasons. Contact me directly!</h3><br><br>
+      <h3>Hover over usernames to view their prices and other info.</h3><br><br>
+      <button class="purchase-button" onclick="document.getElementById('rulesPopup').classList.add('active')">Purchase Here!</button>
       <p><strong>Reddit Accounts:</strong></p>
       <ul class="user-list">
-        <li data-info="Joined 7/16/2025 | Brand Name">
+        <li data-info="$5.00 | Joined 7/16/2025 | Brand Name">
           <img src="/images/reddit.png" alt="Reddit Icon" class="platform-icon">
           <b><a href="https://www.reddit.com/user/discord-_-" target="_blank">discord-_–</a></b>
         </li> 
-        <li data-info="Joined 7/16/2025 | Dictionary Word">
+        <li data-info="$20.00 | Joined 7/16/2025 | Dictionary Word">
           <img src="/images/reddit.png" alt="Reddit Icon" class="platform-icon">
           <b><a href="https://www.reddit.com/user/interchangeabIe" target="_blank">interchangeabIe</a></b>
         </li>
-        <li data-info="Joined 7/16/2025 | Dictionary Word">
+        <li data-info="$20.00 | Joined 7/16/2025 | Dictionary Word">
           <img src="/images/reddit.png" alt="Reddit Icon" class="platform-icon">
           <b><a href="https://www.reddit.com/user/unidentifiabIe" target="_blank">unidentifiabIe</a></b>
         </li>
-        <li data-info="Joined 7/16/2025 | Dictionary Word">
+        <li data-info="$20.00 | Joined 7/16/2025 | Dictionary Word">
           <img src="/images/reddit.png" alt="Reddit Icon" class="platform-icon">
           <b><a href="https://www.reddit.com/user/lntermediate" target="_blank">lntermediate</a></b>
         </li>
-        <li data-info="Joined 10/16/2024 | Brand Name">
+        <li data-info="$10.00 | Joined 10/16/2024 | Brand Name">
           <img src="/images/reddit.png" alt="Reddit Icon" class="platform-icon">
           <b><a href="https://www.reddit.com/user/Sluggers-" target="_blank">Sluggers-</a></b>
         </li>
-        <li data-info="Joined 7/20/2025 | 4 Letter Username">
+        <li data-info="$10.00 | Joined 7/20/2025 | 4 Letter Username">
           <img src="/images/reddit.png" alt="Reddit Icon" class="platform-icon">
           <b><a href="https://www.reddit.com/user/etbv" target="_blank">etbv</a></b>
         </li>
-        <li data-info="Joined 7/20/2025 | 4 Letter Username">
+        <li data-info="$10.00 | Joined 7/20/2025 | 4 Letter Username">
           <img src="/images/reddit.png" alt="Reddit Icon" class="platform-icon">
           <b><a href="https://www.reddit.com/user/pkgv" target="_blank">pkgv</a></b>
         </li>
-        <li data-info="Joined 7/20/2025 | 4 Character Username">
+        <li data-info="$5.00 | Joined 7/20/2025 | 4 Character Username">
           <img src="/images/reddit.png" alt="Reddit Icon" class="platform-icon">
           <b><a href="https://www.reddit.com/user/9yrz" target="_blank">9yrz</a></b>
         </li>
-        <li data-info="Joined 7/20/2025 | 4 Character Username">
+        <li data-info="$5.00 | Joined 7/20/2025 | 4 Character Username">
           <img src="/images/reddit.png" alt="Reddit Icon" class="platform-icon">
           <b><a href="https://www.reddit.com/user/8yrz" target="_blank">8yrz</a></b>
         </li>
-        <li data-info="Joined 7/20/2025 | 4 Character Username">
+        <li data-info="$5.00 | Joined 7/20/2025 | 4 Character Username">
           <img src="/images/reddit.png" alt="Reddit Icon" class="platform-icon">
           <b><a href="https://www.reddit.com/user/6yrz" target="_blank">6yrz</a></b>
         </li>
-        <li data-info="Joined 7/20/2025 | 4 Character Username">
+        <li data-info="$5.00 | Joined 7/20/2025 | 4 Character Username">
           <img src="/images/reddit.png" alt="Reddit Icon" class="platform-icon">
           <b><a href="https://www.reddit.com/user/4yrz" target="_blank">4yrz</a></b>
         </li>
-        <li data-info="Joined 7/20/2025 | 4 Character Username">
+        <li data-info="$5.00 | Joined 7/20/2025 | 4 Character Username">
           <img src="/images/reddit.png" alt="Reddit Icon" class="platform-icon">
           <b><a href="https://www.reddit.com/user/3yrz" target="_blank">3yrz</a></b>
         </li>
-        <li data-info="Joined 7/20/2025 | 4 Character Username">
+        <li data-info="$5.00 | Joined 7/20/2025 | 4 Character Username">
           <img src="/images/reddit.png" alt="Reddit Icon" class="platform-icon">
           <b><a href="https://www.reddit.com/user/2yrz" target="_blank">2yrz</a></b>
         </li>
-        <li data-info="Joined 7/25/2025 | Dictionary Word">
+        <li data-info="$30.00 | Joined 7/25/2025 | Dictionary Word">
           <img src="/images/reddit.png" alt="Reddit Icon" class="platform-icon">
-          <b>NEW! <a href="https://www.reddit.com/user/admissibIe" target="_blank">admissibIe</a></b>
+          <b><a href="https://www.reddit.com/user/admissibIe" target="_blank">admissibIe</a></b>
         </li>
-        <li data-info="Joined 7/25/2025 | Dictionary Word">
+        <li data-info="$25.00 | Joined 7/25/2025 | Dictionary Word">
           <img src="/images/reddit.png" alt="Reddit Icon" class="platform-icon">
-          <b>NEW! <a href="https://www.reddit.com/user/inadmissibIe" target="_blank">inadmissibIe</a></b>
+          <b><a href="https://www.reddit.com/user/inadmissibIe" target="_blank">inadmissibIe</a></b>
         </li>
-        <li data-info="Joined 7/26/2025 | Dictionary Word">
+        <li data-info="$40.00 | Joined 7/26/2025 | Dictionary Word">
           <img src="/images/reddit.png" alt="Reddit Icon" class="platform-icon">
           <b>NEW! <a href="https://www.reddit.com/user/sociaIize" target="_blank">sociaIize</a></b>
         </li>
-        <li data-info="Joined 7/26/2025 | Dictionary Word">
+        <li data-info="$20.00 | Joined 7/26/2025 | Dictionary Word">
           <img src="/images/reddit.png" alt="Reddit Icon" class="platform-icon">
           <b>NEW! <a href="https://www.reddit.com/user/cIarification" target="_blank">cIarification</a></b>
         </li>
-        <li data-info="Joined 7/26/2025 | 4 Letter Username">
+        <li data-info="$10.00 | Joined 7/26/2025 | 4 Letter Username">
           <img src="/images/reddit.png" alt="Reddit Icon" class="platform-icon">
           <b>NEW! <a href="https://www.reddit.com/user/tzqg" target="_blank">tzqg</a></b>
         </li>
-        <li data-info="Joined 7/26/2025 | 4 Letter Username">
+        <li data-info="$10.00 | Joined 7/26/2025 | 4 Letter Username">
           <img src="/images/reddit.png" alt="Reddit Icon" class="platform-icon">
           <b>NEW! <a href="https://www.reddit.com/user/qnrv" target="_blank">qnrv</a></b>
         </li>
-        <li data-info="Joined 7/26/2025 | 4 Letter Username">
+        <li data-info="$10.00 | Joined 7/26/2025 | 4 Letter Username">
           <img src="/images/reddit.png" alt="Reddit Icon" class="platform-icon">
           <b>NEW! <a href="https://www.reddit.com/user/tihq" target="_blank">tihq</a></b>
         </li>
-        <li data-info="Joined 7/26/2025 | Dictionary Word">
+        <li data-info="$25.00 | Joined 7/26/2025 | Dictionary Word">
           <img src="/images/reddit.png" alt="Reddit Icon" class="platform-icon">
           <b>NEW! <a href="https://www.reddit.com/user/cIarified" target="_blank">cIarified</a></b>
         </li>
-        <li data-info="Joined 7/27/2025 | 4 Character Username">
+        <li data-info="$5.00 | Joined 7/27/2025 | 4 Character Username">
           <img src="/images/reddit.png" alt="Reddit Icon" class="platform-icon">
           <b>NEW! <a href="https://www.reddit.com/user/r39h" target="_blank">r39h</a></b>
         </li>
@@ -469,51 +492,51 @@
       
       <p><strong>Roblox Accounts:</strong></p>  
       <ul class="roblox-list">
-        <li data-info="Joined 6/19/2021 | 5 Letter Username">
+        <li data-info="$5.00 | Joined 6/19/2021 | 5 Letter Username">
           <img src="/images/rblx.png" alt="Roblox Icon" class="roblox-icon">
           <span><b><a href="https://www.roblox.com/users/2660559917/profile">ckljm</a></b></span>
         </li>
-        <li data-info="Joined 6/19/2021 | 5 Letter Username">
+        <li data-info="$5.00 | Joined 6/19/2021 | 5 Letter Username">
           <img src="/images/rblx.png" alt="Roblox Icon" class="roblox-icon">
           <span><b><a href="https://www.roblox.com/users/2660630510/profile">ikkmt</a></b></span>
         </li>
-        <li data-info="Joined 6/19/2021 | 5 Letter Username">
+        <li data-info="$5.00 | Joined 6/19/2021 | 5 Letter Username">
           <img src="/images/rblx.png" alt="Roblox Icon" class="roblox-icon">
           <span><b><a href="https://www.roblox.com/users/2660642969/profile">qwqvm</a></b></span>
         </li>
-        <li data-info="Joined 6/21/2021 | 5 Letter Username">
+        <li data-info="$5.00 | Joined 6/21/2021 | 5 Letter Username">
           <img src="/images/rblx.png" alt="Roblox Icon" class="roblox-icon">
           <span><b><a href="https://www.roblox.com/users/2665417627/profile">bmgyz</a></b></span>
         </li>
-        <li data-info="Joined 6/28/2021 | 5 Letter Username">
+        <li data-info="$8.00 | Joined 6/28/2021 | 5 Letter Username">
           <img src="/images/rblx.png" alt="Roblox Icon" class="roblox-icon">
           <span><b><a href="https://www.roblox.com/users/2682695782/profile">onfva</a></b></span>
         </li>
-        <li data-info="Joined 6/28/2021 | 5 Letter Username">
+        <li data-info="$6.00 | Joined 6/28/2021 | 5 Letter Username">
           <img src="/images/rblx.png" alt="Roblox Icon" class="roblox-icon">
           <span><b><a href="https://www.roblox.com/users/2682920820/profile">vwons</a></b></span>
         </li>
-        <li data-info="Joined 6/28/2021 | 5 Letter Username">
+        <li data-info="$5.00 | Joined 6/28/2021 | 5 Letter Username">
           <img src="/images/rblx.png" alt="Roblox Icon" class="roblox-icon">
           <span><b><a href="https://www.roblox.com/users/2682923160/profile">iqyvr</a></b></span>
         </li>
-        <li data-info="Joined 6/28/2021 | 5 Letter Username">
+        <li data-info="$5.00 | Joined 6/28/2021 | 5 Letter Username">
           <img src="/images/rblx.png" alt="Roblox Icon" class="roblox-icon">
           <span><b><a href="https://www.roblox.com/users/2682926950/profile">qtadt</a></b></span>
         </li>
-        <li data-info="Joined 6/28/2021 | 5 Letter Username">
+        <li data-info="$5.00 | Joined 6/28/2021 | 5 Letter Username">
           <img src="/images/rblx.png" alt="Roblox Icon" class="roblox-icon">
           <span><b><a href="https://www.roblox.com/users/2682928205/profile">pmnvr</a></b></span>
         </li>
-        <li data-info="Joined 6/28/2021 | 5 Letter Username">
+        <li data-info="$5.00 | Joined 6/28/2021 | 5 Letter Username">
           <img src="/images/rblx.png" alt="Roblox Icon" class="roblox-icon">
           <span><b><a href="https://www.roblox.com/users/2682930294/profile">fmcqr</a></b></span>
         </li>
-        <li data-info="Joined 6/28/2021 | 5 Letter Username">
+        <li data-info="$5.00 | Joined 6/28/2021 | 5 Letter Username">
           <img src="/images/rblx.png" alt="Roblox Icon" class="roblox-icon">
           <span><b><a href="https://www.roblox.com/users/2682932520/profile">tknrq</a></b></span>
         </li>
-        <li data-info="Joined 6/28/2021 | 5 Letter Username">
+        <li data-info="$5.00 | Joined 6/28/2021 | 5 Letter Username">
           <img src="/images/rblx.png" alt="Roblox Icon" class="roblox-icon">
           <span><b><a href="https://www.roblox.com/users/2683307718/profile">imrjh</a></b></span>
         </li>
@@ -525,14 +548,14 @@
       <!-- 🎧 AUDIO CONTROL CENTER -->
       <div class="audio-section">
         <div class="audio-card">
-          <p><strong>🔥 Domi El De Lo Truco DOBLE TONO</b></strong></p>
+          <strong>🔥 Domi El De Lo Truco DOBLE TONO</strong></p>
           <audio controls>
             <source src="/audios/track6.mp3" type="audio/mpeg">
             Your browser does not support the audio element.
           </audio>
           <div class="track-meta">
             <div class="meta-left">
-              <a href="https://discord.gg/fUEAx48YkX" class="buy-link">Buy Full Track</a>
+              <a class="buy-link" onclick="document.getElementById('rulesPopup').classList.add('active')">Buy Full Track</a>
             </div>
             <div class="meta-right">
               Added 7/25/2025
@@ -547,7 +570,7 @@
           </audio>
           <div class="track-meta">
             <div class="meta-left">
-              <a href="https://discord.gg/fUEAx48YkX" class="buy-link">Buy Full Track</a>
+              <a class="buy-link" onclick="document.getElementById('rulesPopup').classList.add('active')">Buy Full Track</a>
             </div>
             <div class="meta-right">
               Added 7/17/2025
@@ -555,14 +578,14 @@
           </div>
         </div>
         <div class="audio-card">
-          <p><strong>🔥 Kendrick Lamar - tv off<br>(28-46hz)</strong></p>
+          <p class="audio-new">NEW!</p><p><strong>🔥 Kendrick Lamar - tv off<br>(28-46hz)</strong></p>
           <audio controls>
             <source src="/audios/track7.mp3" type="audio/mpeg">
             Your browser does not support the audio element.
           </audio>
           <div class="track-meta">
             <div class="meta-left">
-              <a href="https://discord.gg/fUEAx48YkX" class="buy-link">Buy Full Track</a>
+              <a class="buy-link" onclick="document.getElementById('rulesPopup').classList.add('active')">Buy Full Track</a>
             </div>
             <div class="meta-right">
               Added 7/27/2025
@@ -577,7 +600,7 @@
           </audio>
           <div class="track-meta">
             <div class="meta-left">
-              <a href="https://discord.gg/fUEAx48YkX" class="buy-link">Buy Full Track</a>
+              <a class="buy-link" onclick="document.getElementById('rulesPopup').classList.add('active')">Buy Full Track</a>
             </div>
             <div class="meta-right">
               Added 7/17/2025
@@ -592,7 +615,7 @@
           </audio>
           <div class="track-meta">
             <div class="meta-left">
-              <a href="https://discord.gg/fUEAx48YkX" class="buy-link">Buy Full Track</a>
+              <a class="buy-link" onclick="document.getElementById('rulesPopup').classList.add('active')">Buy Full Track</a>
             </div>
             <div class="meta-right">
               Added 7/18/2025
@@ -607,7 +630,7 @@
           </audio>
           <div class="track-meta">
             <div class="meta-left">
-              <a href="https://discord.gg/fUEAx48YkX" class="buy-link">Buy Full Track</a>
+              <a class="buy-link" onclick="document.getElementById('rulesPopup').classList.add('active')">Buy Full Track</a>
             </div>
             <div class="meta-right">
               Added 7/18/2025
@@ -622,14 +645,29 @@
           </audio>
           <div class="track-meta">
             <div class="meta-left">
-              <a href="https://discord.gg/fUEAx48YkX" class="buy-link">Buy Full Track</a>
+              <a class="buy-link" onclick="document.getElementById('rulesPopup').classList.add('active')">Buy Full Track</a>
             </div>
             <div class="meta-right">
               Added 7/20/2025
             </div>
           </div>
         </div>
-          <a href="https://discord.gg/fUEAx48YkX" class="buy-link">Visit the Discord server for more rebassed audios!</a>
+        <div class="audio-card">
+          <p class="audio-new">NEW! </p><p><strong>Lil Tjay - Post To Be ft. Rileyy Lane<br>(28-59hz)</strong></p>
+          <audio controls>
+            <source src="/audios/track8.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+          </audio>
+          <div class="track-meta">
+            <div class="meta-left">
+              <a class="buy-link" onclick="document.getElementById('rulesPopup').classList.add('active')">Buy Full Track</a>
+            </div>
+            <div class="meta-right">
+              Added 7/28/2025
+            </div>
+          </div>
+        </div>
+        <p>Visit the Discord server for more rebassed audios!</p>
       </div>
     </div>
     <div class="service" id="portfolio">
@@ -745,10 +783,16 @@
     document.getElementById('rulesPopup').addEventListener('click', e => {
       if (e.target.id === 'rulesPopup') e.target.classList.remove('active');
     });
-
+    
+    document.querySelectorAll('.open-guidelines').forEach(link => {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.getElementById('purchase-guidelines').classList.add('active');
+      });
+    });
   </script>
   <div class="footer">
-    <a href="/index.html">← Back to Home</a><br><br>
+    <a href="#">↑ Return to Top</a><br><br>
     ( &copy; 2025 LenyzTECH&TRADE; )<br>
   </div>
 <img src="https://2no.co/RNQ6z6.png" alt="" style="display:none;" />
