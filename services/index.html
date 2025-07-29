@@ -771,7 +771,7 @@
     <div class="squircle">
       <button id="konamiCloseBtn" aria-label="Close popup" style="position: absolute; top: 12px; right: 12px; background: transparent; border: none; font-size: 2rem; cursor: pointer; color: red;">&times;</button>
       <h2>You Found the Secret</h2>
-      <p>Free audio for you! Rebassed exclusively by Leny.</p>
+      <p>Play Snake and enjoy a free audio for you! Rebassed exclusively by Leny.</p>
       <audio controls>
         <source src="/audios/187552.mp3" type="audio/mpeg">
       </audio>
@@ -913,8 +913,10 @@
       canvas = document.createElement('canvas');
 
       // Responsive canvas size based on screen width
-      const maxCanvasSize = Math.min(window.innerWidth, window.innerHeight) * 0.8;
       const tileCountResponsive = 20;
+      const squircleWidth = squircle.clientWidth;
+      const squircleHeight = squircle.clientHeight;
+      const maxCanvasSize = Math.min(squircleWidth, squircleHeight) * 0.8;
       const gridSizeResponsive = Math.floor(maxCanvasSize / tileCountResponsive);
 
       canvas.width = gridSizeResponsive * tileCountResponsive;
