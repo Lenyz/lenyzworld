@@ -152,6 +152,9 @@
       align-items: center;
       justify-content: center;
       z-index: 9999;
+      padding: 1rem;
+      box-sizing: border-box;
+      overflow-y: auto;
     }
 
     .konami-popup.active {
@@ -166,6 +169,8 @@
       max-width: 400px;
       text-align: center;
       box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+      max-height: 90vh;
+      overflow-y: auto;
     }
 
     .dark-mode .squircle {
@@ -198,12 +203,16 @@
       position: fixed;
       bottom: 1rem;
       left: 1rem;
-      z-index: 999;
+      z-index: 10000;
       display: none;
       flex-direction: column;
       align-items: center;
       gap: 0.4rem;
       transition: transform 0.3s ease;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 0.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     }
 
     .mobile-arrows.hide {
@@ -422,7 +431,8 @@
   </div>
 
   <div class="konami-popup" id="konamiPopup">
-    <div class="squircle">
+      <div class="squircle">
+      <button id="konamiCloseBtn" aria-label="Close popup" style="position: absolute; top: 12px; right: 12px; background: transparent; border: none; font-size: 2rem; cursor: pointer; color: red;">&times;</button>
       <h2>You Found the Secret</h2>
       <p>Free audio for you! Rebassed exclusively by Leny.</p>
       <audio controls>
@@ -496,19 +506,243 @@
     });
 
 
-    document.getElementById('konamiPopup').addEventListener('click', function (e) {
+    const konamiPopup = document.getElementById('konamiPopup');
+    const mobileArrows = document.getElementById('mobileArrows');
+
+    konamiPopup.addEventListener('click', function (e) {
+      // Prevent closing popup if clicking on mobile arrows or their children
       if (e.target === this) {
         this.classList.remove('active');
+        // Remove snake game when popup closes
+        removeSnakeGame();
       }
     });
 
-    // Simulate key press on mobile button clicks
+    // Show mobile arrows when popup is active
+    const observer = new MutationObserver(mutations => {
+      mutations.forEach(mutation => {
+        if (mutation.attributeName === 'class') {
+          if (konamiPopup.classList.contains('active')) {
+            mobileArrows.style.display = 'flex';
+            startSnakeGame();
+          } else {
+            // Do not hide mobile arrows on popup close to keep them visible
+            // mobileArrows.style.display = 'none';
+            removeSnakeGame();
+          }
+        }
+      });
+    });
+
+    observer.observe(konamiPopup, { attributes: true });
+
+    // Snake game implementation
+    let snakeGameInterval = null;
+    let canvas = null;
+    let ctx = null;
+    let snake = [];
+    let direction = 'right';
+    let nextDirection = 'right';
+    let food = null;
+    const gridSize = 20;
+    const tileCount = 20;
+
+    function startSnakeGame() {
+      if (canvas) return; // Already running
+
+      const squircle = konamiPopup.querySelector('.squircle');
+
+      // Clear existing content except h2, p, audio, and download button
+      // We'll keep the heading and audio, but add the game canvas below
+      // Remove any existing canvas if present
+      const existingCanvas = squircle.querySelector('canvas');
+      if (existingCanvas) {
+        existingCanvas.remove();
+      }
+
+      canvas = document.createElement('canvas');
+
+      // Responsive canvas size based on screen width
+      const maxCanvasSize = Math.min(window.innerWidth, window.innerHeight) * 0.8;
+      const tileCountResponsive = 20;
+      const gridSizeResponsive = Math.floor(maxCanvasSize / tileCountResponsive);
+
+      canvas.width = gridSizeResponsive * tileCountResponsive;
+      canvas.height = gridSizeResponsive * tileCountResponsive;
+      canvas.style.background = '#000';
+      canvas.style.display = 'block';
+      canvas.style.margin = '1rem auto';
+      canvas.style.borderRadius = '12px';
+      squircle.appendChild(canvas);
+
+      ctx = canvas.getContext('2d');
+
+      snake = [
+        { x: 9, y: 9 },
+        { x: 8, y: 9 },
+        { x: 7, y: 9 }
+      ];
+      direction = 'right';
+      nextDirection = 'right';
+      placeFood();
+
+      window.addEventListener('keydown', handleKeyDown);
+
+      snakeGameInterval = setInterval(gameLoop, 100);
+    }
+
+    function removeSnakeGame() {
+      if (snakeGameInterval) {
+        clearInterval(snakeGameInterval);
+        snakeGameInterval = null;
+      }
+      if (canvas) {
+        canvas.remove();
+        canvas = null;
+        ctx = null;
+      }
+      window.removeEventListener('keydown', handleKeyDown);
+    }
+
+    function placeFood() {
+      let newFood = null;
+      while (!newFood || snake.some(segment => segment.x === newFood.x && segment.y === newFood.y)) {
+        newFood = {
+          x: Math.floor(Math.random() * tileCount),
+          y: Math.floor(Math.random() * tileCount)
+        };
+      }
+      food = newFood;
+    }
+
+    function gameLoop() {
+      update();
+      draw();
+    }
+
+    function update() {
+      // Update direction
+      direction = nextDirection;
+
+      // Calculate new head position
+      const head = { ...snake[0] };
+      switch (direction) {
+        case 'left':
+          head.x--;
+          break;
+        case 'up':
+          head.y--;
+          break;
+        case 'right':
+          head.x++;
+          break;
+        case 'down':
+          head.y++;
+          break;
+      }
+
+      // Wrap around edges
+      if (head.x < 0) head.x = tileCount - 1;
+      if (head.x >= tileCount) head.x = 0;
+      if (head.y < 0) head.y = tileCount - 1;
+      if (head.y >= tileCount) head.y = 0;
+
+      // Check collision with self
+      if (snake.some(segment => segment.x === head.x && segment.y === head.y)) {
+        // Game over - reset snake
+        snake = [
+          { x: 9, y: 9 },
+          { x: 8, y: 9 },
+          { x: 7, y: 9 }
+        ];
+        direction = 'right';
+        nextDirection = 'right';
+        placeFood();
+        return;
+      }
+
+      // Add new head
+      snake.unshift(head);
+
+      // Check if food eaten
+      if (head.x === food.x && head.y === food.y) {
+        placeFood();
+      } else {
+        // Remove tail
+        snake.pop();
+      }
+    }
+
+    function draw() {
+      if (!ctx) return;
+      // Clear canvas
+      ctx.fillStyle = '#000';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Draw food
+      ctx.fillStyle = '#e74c3c';
+      ctx.fillRect(food.x * gridSize, food.y * gridSize, gridSize, gridSize);
+
+      // Draw snake
+      ctx.fillStyle = '#2ecc71';
+      snake.forEach((segment, index) => {
+        ctx.fillRect(segment.x * gridSize, segment.y * gridSize, gridSize, gridSize);
+      });
+    }
+
+    function handleKeyDown(e) {
+      const key = e.key.toLowerCase();
+      switch (key) {
+        case 'arrowleft':
+        case 'a':
+          if (direction !== 'right') nextDirection = 'left';
+          break;
+        case 'arrowup':
+        case 'w':
+          if (direction !== 'down') nextDirection = 'up';
+          break;
+        case 'arrowright':
+        case 'd':
+          if (direction !== 'left') nextDirection = 'right';
+          break;
+        case 'arrowdown':
+        case 's':
+          if (direction !== 'up') nextDirection = 'down';
+          break;
+      }
+    }
+
+    // Directly control snake direction on mobile button clicks
     const mobileButtons = document.querySelectorAll('#mobileArrows button');
     mobileButtons.forEach(btn => {
       btn.addEventListener('click', () => {
-        const key = btn.dataset.key;
-        document.dispatchEvent(new KeyboardEvent('keydown', { key }));
+        const key = btn.dataset.key.toLowerCase();
+        switch (key) {
+          case 'arrowleft':
+          case 'a':
+            if (direction !== 'right') nextDirection = 'left';
+            break;
+          case 'arrowup':
+          case 'w':
+            if (direction !== 'down') nextDirection = 'up';
+            break;
+          case 'arrowright':
+          case 'd':
+            if (direction !== 'left') nextDirection = 'right';
+            break;
+          case 'arrowdown':
+          case 's':
+            if (direction !== 'up') nextDirection = 'down';
+            break;
+        }
       });
+    });
+
+    // Close button for konami popup
+    const konamiCloseBtn = document.getElementById('konamiCloseBtn');
+    konamiCloseBtn.addEventListener('click', () => {
+      konamiPopup.classList.remove('active');
+      removeSnakeGame();
     });
   </script>
 <!-- What's New Popup -->
@@ -516,8 +750,8 @@
   <div class="whats-new-container">
     <button class="close-btn" onclick="dismissWhatsNew()">&times;</button>
     <h3>What's New!</h3>
-    <p>1 new Track and minor visual enhancements.</p>
-  <sub>7/28/2025</sub></div>
+    <p><p style="color:red"><b>NEW</b></p> Snake Game! Use your arrow keys to find the secret menu!<br>5 new Reddit Accounts & 2 new Tracks!</p>
+  <sub>7/29/2025</sub></div>
 </div>
 
 <style>

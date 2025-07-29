@@ -225,17 +225,27 @@
     }
 
     /* Mobile Konami Buttons */
-    .mobile-konami {
-      display: none;
+    .mobile-arrows {
       position: fixed;
       bottom: 1rem;
       left: 1rem;
-      z-index: 1000;
-      gap: 0.4rem;
+      z-index: 10000;
+      display: none;
       flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+      transition: transform 0.3s ease;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 0.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     }
 
-    .mobile-konami button {
+    .mobile-arrows.hide {
+      transform: translateY(150%);
+    }
+
+    .mobile-arrows button {
       width: 44px;
       height: 44px;
       border-radius: 8px;
@@ -245,17 +255,23 @@
       cursor: pointer;
     }
 
-    .mobile-konami-row {
+    .horizontal-arrows {
       display: flex;
+      gap: 0.4rem;
       justify-content: center;
+    }
+
+    .ab-buttons {
+      display: flex;
       gap: 0.4rem;
     }
 
-    @media (max-width: 768px) {
-      .mobile-konami {
+    @media (max-width: 600px) {
+      .mobile-arrows {
         display: flex;
       }
     }
+    
     /* Rules Button (top right) */
     .rules-button {
       position: fixed;
@@ -467,32 +483,53 @@
         </li>
         <li data-info="$40.00 | Joined 7/26/2025 | Dictionary Word">
           <img src="/images/reddit.png" alt="Reddit Icon" class="platform-icon">
-          <b>NEW! <a href="https://www.reddit.com/user/sociaIize" target="_blank">sociaIize</a></b>
+          <b><a href="https://www.reddit.com/user/sociaIize" target="_blank">sociaIize</a></b>
         </li>
         <li data-info="$20.00 | Joined 7/26/2025 | Dictionary Word">
           <img src="/images/reddit.png" alt="Reddit Icon" class="platform-icon">
-          <b>NEW! <a href="https://www.reddit.com/user/cIarification" target="_blank">cIarification</a></b>
+          <b><a href="https://www.reddit.com/user/cIarification" target="_blank">cIarification</a></b>
         </li>
         <li data-info="$10.00 | Joined 7/26/2025 | 4 Letter Username">
           <img src="/images/reddit.png" alt="Reddit Icon" class="platform-icon">
-          <b>NEW! <a href="https://www.reddit.com/user/tzqg" target="_blank">tzqg</a></b>
+          <b><a href="https://www.reddit.com/user/tzqg" target="_blank">tzqg</a></b>
         </li>
         <li data-info="$10.00 | Joined 7/26/2025 | 4 Letter Username">
           <img src="/images/reddit.png" alt="Reddit Icon" class="platform-icon">
-          <b>NEW! <a href="https://www.reddit.com/user/qnrv" target="_blank">qnrv</a></b>
+          <b><a href="https://www.reddit.com/user/qnrv" target="_blank">qnrv</a></b>
         </li>
         <li data-info="$10.00 | Joined 7/26/2025 | 4 Letter Username">
           <img src="/images/reddit.png" alt="Reddit Icon" class="platform-icon">
-          <b>NEW! <a href="https://www.reddit.com/user/tihq" target="_blank">tihq</a></b>
+          <b><a href="https://www.reddit.com/user/tihq" target="_blank">tihq</a></b>
         </li>
         <li data-info="$25.00 | Joined 7/26/2025 | Dictionary Word">
           <img src="/images/reddit.png" alt="Reddit Icon" class="platform-icon">
-          <b>NEW! <a href="https://www.reddit.com/user/cIarified" target="_blank">cIarified</a></b>
+          <b><a href="https://www.reddit.com/user/cIarified" target="_blank">cIarified</a></b>
         </li>
         <li data-info="$5.00 | Joined 7/27/2025 | 4 Character Username">
           <img src="/images/reddit.png" alt="Reddit Icon" class="platform-icon">
           <b>NEW! <a href="https://www.reddit.com/user/r39h" target="_blank">r39h</a></b>
         </li>
+        <li data-info="$40.00 | Joined 7/29/2025 | Dictionary Word">
+          <img src="/images/reddit.png" alt="Reddit Icon" class="platform-icon">
+          <b>NEW! <a href="https://www.reddit.com/user/technoIogicaI" target="_blank">technoIogicaI</a></b>
+        </li>
+        <li data-info="$30.00 | Joined 7/29/2025 | Dictionary Word">
+          <img src="/images/reddit.png" alt="Reddit Icon" class="platform-icon">
+          <b>NEW! <a href="https://www.reddit.com/user/illegaIs" target="_blank">illegaIs</a></b>
+        </li>
+        <li data-info="$5.00 | Joined 7/29/2025 | 4 Character Username">
+          <img src="/images/reddit.png" alt="Reddit Icon" class="platform-icon">
+          <b>NEW! <a href="https://www.reddit.com/user/6gf4" target="_blank">6gf4</a></b>
+        </li>
+        <li data-info="$8.00 | Joined 7/29/2025 | 4 Letter Username">
+          <img src="/images/reddit.png" alt="Reddit Icon" class="platform-icon">
+          <b>NEW! <a href="https://www.reddit.com/user/gvho" target="_blank">gvho</a>
+        </li>
+        <li data-info="$5.00 | Joined 7/29/2025 | 4 Character Username">
+          <img src="/images/reddit.png" alt="Reddit Icon" class="platform-icon">
+          <b>NEW! <a href="https://www.reddit.com/user/t5uh" target="_blank">t5uh</a></b>
+        </li>
+
       </ul><br>
       
       <p><strong>Roblox Accounts:</strong></p>  
@@ -672,6 +709,36 @@
             </div>
           </div>
         </div>
+        <div class="audio-card">
+          <p class="audio-new">NEW! </p><p><strong>Brtiago & Anuel AA - Kilerito DOBLE TONO</strong></p>
+          <audio controls>
+            <source src="/audios/track9.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+          </audio>
+          <div class="track-meta">
+            <div class="meta-left">
+              <a class="buy-link" onclick="document.getElementById('rulesPopup').classList.add('active')">Buy Full Track</a>
+            </div>
+            <div class="meta-right">
+              Added 7/29/2025
+            </div>
+          </div>
+        </div>
+        <div class="audio-card">
+          <p class="audio-new">NEW! </p><p><strong>Kendrick Lamar - Swimming Pools<br>(31-39hz)</strong></p>
+          <audio controls>
+            <source src="/audios/track10.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+          </audio>
+          <div class="track-meta">
+            <div class="meta-left">
+              <a class="buy-link" onclick="document.getElementById('rulesPopup').classList.add('active')">Buy Full Track</a>
+            </div>
+            <div class="meta-right">
+              Added 7/29/2025
+            </div>
+          </div>
+        </div>
         <p>Visit the Discord server for more rebassed audios!</p>
       </div>
     </div>
@@ -702,6 +769,7 @@
   <!-- Konami Popup -->
   <div class="konami-popup" id="konamiPopup">
     <div class="squircle">
+      <button id="konamiCloseBtn" aria-label="Close popup" style="position: absolute; top: 12px; right: 12px; background: transparent; border: none; font-size: 2rem; cursor: pointer; color: red;">&times;</button>
       <h2>You Found the Secret</h2>
       <p>Free audio for you! Rebassed exclusively by Leny.</p>
       <audio controls>
@@ -712,16 +780,14 @@
   </div>
 
   <!-- Mobile Konami Inputs -->
-  <div class="mobile-konami" id="mobileKonami">
-    <div class="mobile-konami-row">
-      <button data-key="ArrowUp">↑</button>
-    </div>
-    <div class="mobile-konami-row">
+  <div class="mobile-arrows" id="mobileArrows">
+    <button data-key="ArrowUp">↑</button>
+    <div class="horizontal-arrows">
       <button data-key="ArrowLeft">←</button>
       <button data-key="ArrowDown">↓</button>
       <button data-key="ArrowRight">→</button>
     </div>
-    <div class="mobile-konami-row">
+    <div class="ab-buttons">
       <button data-key="b">B</button>
       <button data-key="a">A</button>
     </div>
@@ -731,59 +797,295 @@
     const toggle = document.getElementById('darkToggle');
     toggle.addEventListener('click', () => {
       document.body.classList.toggle('dark-mode');
+      document.querySelector('.card').classList.toggle('dark-mode');
     });
 
-    // Hide buttons on scroll
-    let lastScroll = 0;
-    window.addEventListener('scroll', () => {
+    let lastScrollTop = 0;
+    window.addEventListener('scroll', function () {
       const st = window.pageYOffset || document.documentElement.scrollTop;
-      const down = st > lastScroll;
-      if (window.innerWidth < 768) {
-        toggle.classList.toggle('hide', down);
-        document.getElementById('mobileKonami').style.display = down ? 'none' : 'flex';
+      const arrows = document.getElementById('mobileArrows');
+      if (window.innerWidth < 600) {
+        if (st > lastScrollTop) {
+          toggle.classList.add("hide");
+          arrows.classList.add("hide");
+        } else {
+          toggle.classList.remove("hide");
+          arrows.classList.remove("hide");
+        }
       }
-      lastScroll = st <= 0 ? 0 : st;
-    });
+      lastScrollTop = st <= 0 ? 0 : st;
+    }, false);
 
-    // Konami Code
-    const konami = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
-    let input = [];
-    const popup = document.getElementById('konamiPopup');
-    const mobileButtons = document.querySelectorAll('[data-key]');
+    const konamiSequence = [
+      'ArrowUp', 'ArrowUp',
+      'ArrowDown', 'ArrowDown',
+      'ArrowLeft', 'ArrowRight',
+      'ArrowLeft', 'ArrowRight',
+      'b', 'a'
+    ];
+    let inputSequence = [];
 
-    const sounds = {
-      ArrowUp: new Audio('/audios/up.mp3'),
-      ArrowDown: new Audio('/audios/down.mp3'),
-      ArrowLeft: new Audio('/audios/left.mp3'),
-      ArrowRight: new Audio('/audios/right.mp3')
+    const arrowSounds = {
+      'ArrowUp': new Audio('/audios/up.mp3'),
+      'ArrowDown': new Audio('/audios/down.mp3'),
+      'ArrowLeft': new Audio('/audios/left.mp3'),
+      'ArrowRight': new Audio('/audios/right.mp3')
     };
 
-    let lastPlayed = 0;
-    function playSound(key) {
-      const now = Date.now();
-      if (sounds[key] && now - lastPlayed > 300) {
-        sounds[key].currentTime = 0;
-        sounds[key].play().catch(() => {});
-        lastPlayed = now;
+    function handleKonamiInput(key) {
+      if (arrowSounds[key]) {
+        arrowSounds[key].play().catch(() => {});
+      }
+
+      inputSequence.push(key);
+      inputSequence = inputSequence.slice(-konamiSequence.length);
+      if (JSON.stringify(inputSequence).toLowerCase() === JSON.stringify(konamiSequence).toLowerCase()) {
+        document.getElementById('konamiPopup').classList.add('active');
       }
     }
 
-    function registerInput(key) {
-      playSound(key);
-      input.push(key);
-      input = input.slice(-konami.length);
-      if (JSON.stringify(input).toLowerCase() === JSON.stringify(konami).toLowerCase()) {
-        popup.classList.add('active');
-      }
-    }
-
-    document.addEventListener('keydown', e => registerInput(e.key));
-    mobileButtons.forEach(btn => {
-      btn.addEventListener('click', () => registerInput(btn.dataset.key));
+    window.addEventListener('keydown', function (e) {
+      handleKonamiInput(e.key);
     });
 
-    popup.addEventListener('click', e => {
-      if (e.target === popup) popup.classList.remove('active');
+    document.querySelectorAll('#mobileArrows button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const key = btn.dataset.key;
+        handleKonamiInput(key);
+      });
+    });
+
+
+    const konamiPopup = document.getElementById('konamiPopup');
+    const mobileArrows = document.getElementById('mobileArrows');
+
+    konamiPopup.addEventListener('click', function (e) {
+      // Prevent closing popup if clicking on mobile arrows or their children
+      if (e.target === this) {
+        this.classList.remove('active');
+        // Remove snake game when popup closes
+        removeSnakeGame();
+      }
+    });
+
+    // Show mobile arrows when popup is active
+    const observer = new MutationObserver(mutations => {
+      mutations.forEach(mutation => {
+        if (mutation.attributeName === 'class') {
+          if (konamiPopup.classList.contains('active')) {
+            mobileArrows.style.display = 'flex';
+            startSnakeGame();
+          } else {
+            // Do not hide mobile arrows on popup close to keep them visible
+            // mobileArrows.style.display = 'none';
+            removeSnakeGame();
+          }
+        }
+      });
+    });
+
+    observer.observe(konamiPopup, { attributes: true });
+
+    // Snake game implementation
+    let snakeGameInterval = null;
+    let canvas = null;
+    let ctx = null;
+    let snake = [];
+    let direction = 'right';
+    let nextDirection = 'right';
+    let food = null;
+    const gridSize = 20;
+    const tileCount = 20;
+
+    function startSnakeGame() {
+      if (canvas) return; // Already running
+
+      const squircle = konamiPopup.querySelector('.squircle');
+
+      // Clear existing content except h2, p, audio, and download button
+      // We'll keep the heading and audio, but add the game canvas below
+      // Remove any existing canvas if present
+      const existingCanvas = squircle.querySelector('canvas');
+      if (existingCanvas) {
+        existingCanvas.remove();
+      }
+
+      canvas = document.createElement('canvas');
+
+      // Responsive canvas size based on screen width
+      const maxCanvasSize = Math.min(window.innerWidth, window.innerHeight) * 0.8;
+      const tileCountResponsive = 20;
+      const gridSizeResponsive = Math.floor(maxCanvasSize / tileCountResponsive);
+
+      canvas.width = gridSizeResponsive * tileCountResponsive;
+      canvas.height = gridSizeResponsive * tileCountResponsive;
+      canvas.style.background = '#000';
+      canvas.style.display = 'block';
+      canvas.style.margin = '1rem auto';
+      canvas.style.borderRadius = '12px';
+      squircle.appendChild(canvas);
+
+      ctx = canvas.getContext('2d');
+
+      snake = [
+        { x: 9, y: 9 },
+        { x: 8, y: 9 },
+        { x: 7, y: 9 }
+      ];
+      direction = 'right';
+      nextDirection = 'right';
+      placeFood();
+
+      window.addEventListener('keydown', handleKeyDown);
+
+      snakeGameInterval = setInterval(gameLoop, 100);
+    }
+
+    function removeSnakeGame() {
+      if (snakeGameInterval) {
+        clearInterval(snakeGameInterval);
+        snakeGameInterval = null;
+      }
+      if (canvas) {
+        canvas.remove();
+        canvas = null;
+        ctx = null;
+      }
+      window.removeEventListener('keydown', handleKeyDown);
+    }
+
+    function placeFood() {
+      let newFood = null;
+      while (!newFood || snake.some(segment => segment.x === newFood.x && segment.y === newFood.y)) {
+        newFood = {
+          x: Math.floor(Math.random() * tileCount),
+          y: Math.floor(Math.random() * tileCount)
+        };
+      }
+      food = newFood;
+    }
+
+    function gameLoop() {
+      update();
+      draw();
+    }
+
+    function update() {
+      // Update direction
+      direction = nextDirection;
+
+      // Calculate new head position
+      const head = { ...snake[0] };
+      switch (direction) {
+        case 'left':
+          head.x--;
+          break;
+        case 'up':
+          head.y--;
+          break;
+        case 'right':
+          head.x++;
+          break;
+        case 'down':
+          head.y++;
+          break;
+      }
+
+      // Wrap around edges
+      if (head.x < 0) head.x = tileCount - 1;
+      if (head.x >= tileCount) head.x = 0;
+      if (head.y < 0) head.y = tileCount - 1;
+      if (head.y >= tileCount) head.y = 0;
+
+      // Check collision with self
+      if (snake.some(segment => segment.x === head.x && segment.y === head.y)) {
+        // Game over - reset snake
+        snake = [
+          { x: 9, y: 9 },
+          { x: 8, y: 9 },
+          { x: 7, y: 9 }
+        ];
+        direction = 'right';
+        nextDirection = 'right';
+        placeFood();
+        return;
+      }
+
+      // Add new head
+      snake.unshift(head);
+
+      // Check if food eaten
+      if (head.x === food.x && head.y === food.y) {
+        placeFood();
+      } else {
+        // Remove tail
+        snake.pop();
+      }
+    }
+
+    function draw() {
+      if (!ctx) return;
+      // Clear canvas
+      ctx.fillStyle = '#000';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Draw food
+      ctx.fillStyle = '#e74c3c';
+      ctx.fillRect(food.x * gridSize, food.y * gridSize, gridSize, gridSize);
+
+      // Draw snake
+      ctx.fillStyle = '#2ecc71';
+      snake.forEach((segment, index) => {
+        ctx.fillRect(segment.x * gridSize, segment.y * gridSize, gridSize, gridSize);
+      });
+    }
+
+    function handleKeyDown(e) {
+      const key = e.key.toLowerCase();
+      switch (key) {
+        case 'arrowleft':
+        case 'a':
+          if (direction !== 'right') nextDirection = 'left';
+          break;
+        case 'arrowup':
+        case 'w':
+          if (direction !== 'down') nextDirection = 'up';
+          break;
+        case 'arrowright':
+        case 'd':
+          if (direction !== 'left') nextDirection = 'right';
+          break;
+        case 'arrowdown':
+        case 's':
+          if (direction !== 'up') nextDirection = 'down';
+          break;
+      }
+    }
+
+    // Directly control snake direction on mobile button clicks
+    const mobileButtons = document.querySelectorAll('#mobileArrows button');
+    mobileButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const key = btn.dataset.key.toLowerCase();
+        switch (key) {
+          case 'arrowleft':
+          case 'a':
+            if (direction !== 'right') nextDirection = 'left';
+            break;
+          case 'arrowup':
+          case 'w':
+            if (direction !== 'down') nextDirection = 'up';
+            break;
+          case 'arrowright':
+          case 'd':
+            if (direction !== 'left') nextDirection = 'right';
+            break;
+          case 'arrowdown':
+          case 's':
+            if (direction !== 'up') nextDirection = 'down';
+            break;
+        }
+      });
     });
     document.getElementById('rulesPopup').addEventListener('click', e => {
       if (e.target.id === 'rulesPopup') e.target.classList.remove('active');
@@ -794,6 +1096,13 @@
         e.preventDefault();
         document.getElementById('purchase-guidelines').classList.add('active');
       });
+    });
+
+    // Close button for konami popup
+    const konamiCloseBtn = document.getElementById('konamiCloseBtn');
+    konamiCloseBtn.addEventListener('click', () => {
+      konamiPopup.classList.remove('active');
+      removeSnakeGame();
     });
   </script>
   <div class="footer">
