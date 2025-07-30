@@ -577,6 +577,13 @@
       canvas.style.borderRadius = '12px';
       squircle.appendChild(canvas);
 
+      // Update global gridSize and tileCount to responsive values for boundary checks
+      window.gridSize = gridSizeResponsive;
+      window.tileCount = tileCountResponsive;
+
+      console.log('startSnakeGame: canvas size:', canvas.width, canvas.height);
+      console.log('startSnakeGame: gridSize:', window.gridSize, 'tileCount:', window.tileCount);
+
       ctx = canvas.getContext('2d');
 
       snake = [
@@ -608,13 +615,17 @@
 
     function placeFood() {
       let newFood = null;
+      let attempts = 0;
       while (!newFood || snake.some(segment => segment.x === newFood.x && segment.y === newFood.y)) {
         newFood = {
-          x: Math.floor(Math.random() * tileCount),
-          y: Math.floor(Math.random() * tileCount)
+          x: Math.floor(Math.random() * window.tileCount),
+          y: Math.floor(Math.random() * window.tileCount)
         };
+        attempts++;
+        if (attempts > 100) break;
       }
       food = newFood;
+      console.log('placeFood: placed food at', food);
     }
 
     function gameLoop() {
@@ -643,14 +654,32 @@
           break;
       }
 
-      // Wrap around edges
-      if (head.x < 0) head.x = tileCount - 1;
-      if (head.x >= tileCount) head.x = 0;
-      if (head.y < 0) head.y = tileCount - 1;
-      if (head.y >= tileCount) head.y = 0;
+      console.log('update: head position', head);
 
-      // Check collision with self
-      if (snake.some(segment => segment.x === head.x && segment.y === head.y)) {
+      // Wrap around edges
+      // if (head.x < 0) head.x = tileCount - 1;
+      // if (head.x >= tileCount) head.x = 0;
+      // if (head.y < 0) head.y = tileCount - 1;
+      // if (head.y >= tileCount) head.y = 0;
+
+      // Prevent snake from going off screen (no wrap around)
+      if (head.x < 0 || head.x > window.tileCount - 1 || head.y < 0 || head.y > window.tileCount - 1) {
+        console.log('update: snake hit boundary, resetting');
+        // Game over - reset snake
+        snake = [
+          { x: 9, y: 9 },
+          { x: 8, y: 9 },
+          { x: 7, y: 9 }
+        ];
+        direction = 'right';
+        nextDirection = 'right';
+        placeFood();
+        return;
+      }
+
+      // Check collision with self (head colliding with tail)
+      if (snake.slice(1).some(segment => segment.x === head.x && segment.y === head.y)) {
+        console.log('update: snake collided with self, resetting');
         // Game over - reset snake
         snake = [
           { x: 9, y: 9 },
@@ -668,6 +697,7 @@
 
       // Check if food eaten
       if (head.x === food.x && head.y === food.y) {
+        console.log('update: food eaten, placing new food');
         placeFood();
       } else {
         // Remove tail
@@ -677,6 +707,7 @@
 
     function draw() {
       if (!ctx) return;
+      console.log('Drawing frame, snake length:', snake.length);
       // Clear canvas
       ctx.fillStyle = '#000';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -687,6 +718,14 @@
 
       // Draw snake
       ctx.fillStyle = '#2ecc71';
+      if (snake.length === 0) {
+        // Initialize snake if empty
+        snake = [
+          { x: 9, y: 9 },
+          { x: 8, y: 9 },
+          { x: 7, y: 9 }
+        ];
+      }
       snake.forEach((segment, index) => {
         ctx.fillRect(segment.x * gridSize, segment.y * gridSize, gridSize, gridSize);
       });
